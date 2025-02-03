@@ -1,0 +1,20 @@
+services:
+  bot:
+    build: .
+    depends_on:
+      - database
+    restart: always
+    network_mode: "host"
+  database:
+    image: postgres
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: charlie
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data: {}
