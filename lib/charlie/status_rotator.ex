@@ -19,7 +19,7 @@ defmodule Charlie.StatusRotator do
   end
 
   def handle_info(:rotate, state) do
-    Nostrum.Api.Self.update_status(:online, Enum.random(@songs), 0)
+    Nostrum.Api.Self.update_status(:online, {:custom, Enum.random(@songs)})
     Process.send_after(self(), :rotate, :timer.hours(1))
     {:noreply, state}
   end
