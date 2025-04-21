@@ -7,11 +7,24 @@ defmodule Charlie.Application do
 
   @impl true
   def start(_type, _args) do
+    bot_options = %{
+      consumer: Charlie.Consumer,
+      intents: [
+        :message_content,
+        :guild_messages,
+        :guilds,
+        :guild_message_reactions,
+        :guild_members
+      ],
+      wrapped_token: fn -> System.get_env("BOT_TOKEN") end,
+      num_shards: :auto
+    }
+
     children = [
       Charlie.Repo,
       {Ecto.Migrator, repos: Application.fetch_env!(:charlie, :ecto_repos)},
       Charlie.Cache,
-      Charlie.Consumer,
+      {Nostrum.Bot, bot_options},
       Charlie.StatusRotator,
       Charlie.Birthday
     ]

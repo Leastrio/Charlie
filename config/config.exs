@@ -11,14 +11,6 @@ config :charlie,
   ecto_repos: [Charlie.Repo]
 
 config :nostrum,
-  num_shards: :auto,
-  gateway_intents: [
-    :message_content,
-    :guild_messages,
-    :guilds,
-    :guild_message_reactions,
-    :guild_members
-  ],
   caches: %{
     guilds: Nostrum.Cache.GuildCache.Mnesia,
     members: Nostrum.Cache.MemberCache.Mnesia,

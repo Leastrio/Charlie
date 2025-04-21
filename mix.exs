@@ -22,7 +22,7 @@ defmodule Charlie.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nostrum, github: "Leastrio/nostrum"},
+      {:nostrum, github: "Kraigie/nostrum"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:timex, "~> 3.7"},

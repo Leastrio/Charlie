@@ -1,5 +1,5 @@
 defmodule Charlie.Consumer do
-  use Nostrum.Consumer
+  @behaviour Nostrum.Consumer
   require Logger
 
   def handle_event({:READY, ready, _}) do
@@ -55,4 +55,6 @@ defmodule Charlie.Consumer do
   def handle_event({:GUILD_CREATE, guild, _}) do
     Nostrum.Api.Message.create(1201752550307528755, "New guild join!\n\tName: #{guild.name}\n\tMembers: #{guild.member_count}")
   end
+
+  def handle_event(_), do: :noop
 end
