@@ -23,6 +23,8 @@ defmodule Charlie.Consumer do
         Charlie.Commands.Eval.eval(msg)
       String.starts_with?(msg.content, prefix) ->
         Charlie.CommandHandler.handle_message_command(prefix, msg)
+      String.downcase(msg.content) == "@gork is this true" -> 
+        Nostrum.Api.Message.create(msg.channel_id, Enum.random(["yes", "nope"]))
       true -> :noop
     end
 

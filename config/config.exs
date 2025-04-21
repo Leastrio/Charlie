@@ -29,3 +29,6 @@ config :nostrum,
   request_guild_members: true,
   youtubedl: nil,
   streamlink: nil
+
+config :logger,
+  level: :info
